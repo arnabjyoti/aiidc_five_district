@@ -1,0 +1,19 @@
+<app-tovnav *ngIf="isLoggedIn"></app-tovnav>
+<!-- Screen overlay start -->
+<!-- <div class="screen-overlay" *ngIf="isLoggedIn"></div> -->
+<!-- Screen overlay end -->
+<!-- <div [ngClass]="isLoggedIn ? 'container-fluid' : ''"> -->
+    <div [ngClass]="isLoggedIn ? '' : ''">
+
+    <router-outlet></router-outlet>
+    <!-- <div *ngIf="isLoggedIn"> -->
+        <!-- Footer start -->
+        <br><br><br>
+    <!-- </div> -->
+    <footer *ngIf="isLoggedIn" class="main-footer">
+        All rights reserved. STATE DATA CENTER PROJECT MONITORING AND GIS SYSTEM © 2024
+        <span style="float:right">Design and developed by-<a href="https://www.skaplink.com/" target="_blank">Skaplink Technologies Pvt.Ltd.</a>
+        </span>
+    </footer>
+    <!-- Footer end -->
+</div>
