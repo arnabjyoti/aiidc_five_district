@@ -20,8 +20,8 @@ export class HomePublicService {
   }
 
    //Start: Method to pull all the projects
-   getAllProjects(callback: any) {
-    const ENDPOINT = `${environment.BASE_URL}/api/getAllProjects`;
+   getAllProjectsMapView(callback: any) {
+    const ENDPOINT = `${environment.BASE_URL}/api/getAllProjectsMapView`;
     const requestOptions = {
       headers: this.appService.headers,
       method: "post",

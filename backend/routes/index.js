@@ -145,6 +145,9 @@ module.exports = (app) => {
 
 	app.post('/api/getMilestones', ProjectController.getMilestones);
 	
+
+	// map view
+	app.post('/api/getAllProjectsMapView', ProjectController.getAllProjectsMapView);
 	
 
 	//APIs For Mobile App

@@ -939,4 +939,43 @@ getAllProjectsInit(req, res) {
         });
   },
   // End
+
+
+  // map view
+  getAllProjectsMapView(req, res) {
+  let query = {
+  attributes: ["id", "name"],
+  where: {
+    avail_status: '1',
+  },
+  order: [['createdAt', 'DESC']],
+  include: [
+    {
+      model: fileRepoModel,
+      required: false,
+      attributes: [
+        ["original_file_name", "avatar"],
+        ["GPSLatitude", "GPSLatitude"],
+        ["GPSLatitudeRef", "GPSLatitudeRef"],
+        ["GPSLongitude", "GPSLongitude"],
+        ["GPSLongitudeRef", "GPSLongitudeRef"]
+      ]
+    }
+  ]
+};
+
+  console.log("Query is==========> ", query);
+
+  return projectModel
+    .findAll(query)
+    .then(projects => {
+      console.log("projectModel=====================>",projects);
+      
+      res.status(200).send(projects)})
+    .catch(error => {
+      console.log(error);
+      return res.status(400).send(error);
+    });
+}
+
 };

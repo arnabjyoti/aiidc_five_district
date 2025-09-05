@@ -64,7 +64,7 @@ module.exports = (sequelize, type) => {
 	);
 	project.associate = function(models) {
 		// associations can be defined here
-		project.hasOne(models.file_repo);
+		project.hasMany(models.file_repo);
 		project.hasMany(models.disbursement);
 		project.hasMany(models.progress);
 		project.hasMany(models.physical_progress);

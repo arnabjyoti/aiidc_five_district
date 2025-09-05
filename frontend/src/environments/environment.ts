@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   test:true,
-  BASE_URL: 'https://statedatacentreaiidc.com:8500'
+  // BASE_URL: 'https://statedatacentreaiidc.com:8500'
   // BASE_URL: 'http://103.158.205.90:8500'
-  // BASE_URL: 'http://localhost:8500'
+  BASE_URL: 'http://localhost:8500'
 };
 
 /*

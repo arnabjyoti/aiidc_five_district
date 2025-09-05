@@ -315,10 +315,10 @@
 																		</div>
 																		<div class="card-body py-2 border">
 																			<div class="start-date d-flex flex-column align-items-center justify-content-center">
-																				<span class="text-muted pb-1">START DATE</span><br> {{project.actual_end | date : 'dd/MMM/yyyy'}}
+																				<span class="text-muted pb-1">START DATE</span><br> {{project.actual_start | date : 'dd/MMM/yyyy'}}
 																			</div>
 																			<div class="small-box d-flex flex-column align-items-center justify-content-center">
-																				<span class="text-muted pb-1">END DATE</span><br> {{project.actual_start | date : 'dd/MMM/yyyy'}}
+																				<span class="text-muted pb-1">END DATE</span><br> {{project.actual_end | date : 'dd/MMM/yyyy'}}
 																			</div>
 																			<div class="small-box d-flex flex-column align-items-center justify-content-center">
 																				<span class="text-muted pb-1">PHYSICAL PROGRESS</span><br> {{project.percentageProgress}}%
