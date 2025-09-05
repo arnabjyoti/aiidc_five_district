@@ -8,6 +8,8 @@ import { ImageGalleryService } from "./image-gallery.service";
 import * as _ from "underscore";
 import * as $ from "jquery";
 import { ProjectDetailsService } from "../../project-details.service";
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: "app-image-gallery",
@@ -214,6 +216,31 @@ export class ImageGalleryComponent implements OnInit {
         return callback(false);
     }
   };
+
+
+
+  deleteImage(id: number) {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'You will not be able to recover this image!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'No, cancel'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.imageGalleryService.deleteImage(id, (res: any) => {
+        if (res && res.success) {
+          Swal.fire('Deleted!', 'Your image has been deleted.', 'success');
+          this.getDocuments();
+        } else {
+          Swal.fire('Failed!', res?.message || 'Image could not be deleted.', 'error');
+        }
+      });
+    }
+  });
+}
+
 
   getAccessRightsList = () => {
     this.permission.uploadImage = this.loginService.return_hasUploadImageRights();

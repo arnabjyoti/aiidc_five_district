@@ -46,6 +46,7 @@
     "ngx-toastr": "^13.0.0",
     "raphael": "^2.3.0",
     "rxjs": "~6.5.4",
+    "sweetalert2": "^11.23.0",
     "tslib": "^1.10.0",
     "underscore": "^1.10.2",
     "zone.js": "~0.10.2"

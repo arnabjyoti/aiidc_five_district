@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { environment } from '../../../../../../environments/environment';
 import {AppService} from '../../../../../app.service';
+import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +10,8 @@ export class ImageGalleryService {
 
   constructor(
     private appService:AppService,
-    private http:Http
+    private http:Http,
+    private toastr: ToastrService
   ) { }
 
   getDocumentByProjectId(projectId: any, callback: any) {
@@ -63,6 +65,30 @@ export class ImageGalleryService {
           // this.closeSpinnerEvent.next(false);
           return callback && callback(error);
           
+        },
+        () => {
+          console.log("Observable is now completed.");
+        });
+  }
+
+
+  deleteImage(req: any, callback: any) {
+    const ENDPOINT = `${environment.BASE_URL}/api/deleteImage`;
+    const requestOptions = {
+			headers: this.appService.headers,
+			method: 'get',
+      requestObject: req
+		};
+    console.log("requestOptions",requestOptions);
+    
+    this.http.post(ENDPOINT, requestOptions)
+      .subscribe(
+        (response) => {
+          return callback && callback(response.json());
+        },
+        error => {
+          console.log(error);
+          return callback && callback(error);
         },
         () => {
           console.log("Observable is now completed.");

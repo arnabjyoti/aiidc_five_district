@@ -144,6 +144,8 @@ module.exports = (app) => {
 	app.get('/api/getAssembly', AssemblyController.getAssembly);
 
 	app.post('/api/getMilestones', ProjectController.getMilestones);
+
+	app.post('/api/deleteImage', ProjectController.deleteImage);
 	
 
 	// map view

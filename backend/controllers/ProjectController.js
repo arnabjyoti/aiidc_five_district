@@ -1,5 +1,6 @@
 const async = require("async");
 const project_progress = require("../models/project_progress");
+const { where } = require("sequelize");
 const projectModel = require("../models").project;
 const physical_progress = require("../models").physical_progress;
 const progressModel = require("../models").progress;
@@ -944,7 +945,7 @@ getAllProjectsInit(req, res) {
   // map view
   getAllProjectsMapView(req, res) {
   let query = {
-  attributes: ["id", "name"],
+  attributes: ["id", "name", "percentageProgress"],
   where: {
     avail_status: '1',
   },
@@ -953,6 +954,9 @@ getAllProjectsInit(req, res) {
     {
       model: fileRepoModel,
       required: false,
+      where:{
+        isActive: 1
+      },
       attributes: [
         ["original_file_name", "avatar"],
         ["GPSLatitude", "GPSLatitude"],
@@ -976,6 +980,30 @@ getAllProjectsInit(req, res) {
       console.log(error);
       return res.status(400).send(error);
     });
+},
+
+
+deleteImage(req, res) {
+  console.log("delete=====================>", req.body);
+
+  const newData = { isActive: "0" };
+
+  fileRepoModel
+    .update(newData, {
+      where: { id: req.body.requestObject }
+    })
+    .then(([rowsUpdated]) => {
+      if (rowsUpdated > 0) {
+        res.status(200).json({ success: true, message: "Image deleted successfully" });
+      } else {
+        res.status(404).json({ success: false, message: "Image not found" });
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ success: false, message: "Server error", error: err });
+    });
 }
+
 
 };

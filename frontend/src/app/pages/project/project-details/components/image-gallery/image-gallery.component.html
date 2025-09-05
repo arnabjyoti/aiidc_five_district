@@ -55,6 +55,7 @@
                                             {{projImage.GPSLatitudeRef}}</p>
                                         <p><span style="color:orange">Longitude: </span> {{projImage.GPSLongitude}}
                                             {{projImage.GPSLongitudeRef}}</p>
+                                        <p><button class="btn btn-block btn-danger" (click)="deleteImage(projImage.id)"><i class="icon-trash"></i> Delete</button></p>
                                     </div>
                                 </figcaption>
                             </figure>
