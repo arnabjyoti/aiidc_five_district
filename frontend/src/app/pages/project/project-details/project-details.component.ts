@@ -245,8 +245,8 @@ export class ProjectDetailsComponent implements OnInit {
       contractor_name_cs: this.projectDetails.contractor_name_cs,
       contractor_phone: this.projectDetails.contractor_phone,
       contractor_phone_cs: this.projectDetails.contractor_phone_cs,
-      wo_date: moment(this.projectDetails.wo_date).format('YYYY-MM-DD HH:mm:ss'),
-      wo_date_cs: moment(this.projectDetails.wo_date_cs).format('YYYY-MM-DD HH:mm:ss'),
+      wo_date: this.projectDetails.wo_date ? moment(this.projectDetails.wo_date).format('YYYY-MM-DD HH:mm:ss') : null,
+      wo_date_cs: this.projectDetails.wo_date_cs ? moment(this.projectDetails.wo_date_cs).format('YYYY-MM-DD HH:mm:ss') : null,
       wo_amount: this.projectDetails.wo_amount,
       wo_amount_cs: this.projectDetails.wo_amount_cs,
       wo_no: this.projectDetails.wo_no,
@@ -266,8 +266,14 @@ export class ProjectDetailsComponent implements OnInit {
       fileNo: this.projectDetails.fileNo,
       aa_status: this.projectDetails.aa_status,
       completion_date: this.projectDetails.completion_date,
-      actual_start: moment(this.projectDetails.actual_start).format('YYYY-MM-DD HH:mm:ss'),
-      actual_end: this.projectDetails.actual_end,
+     
+actual_start: this.projectDetails.actual_start
+  ? moment(this.projectDetails.actual_start).format('YYYY-MM-DD HH:mm:ss')
+  : null,
+
+actual_end: this.projectDetails.actual_end
+  ? moment(this.projectDetails.actual_end).format('YYYY-MM-DD HH:mm:ss')
+  : null,
       // projectActualEndDate: null,
       projectUpdatedAt: this.now
     };
